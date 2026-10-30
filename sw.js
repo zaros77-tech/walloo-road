@@ -1,7 +1,7 @@
-const CACHE = 'walloo-road-v2';
+const CACHE = 'walloo-road-v3';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './geo.js', './sources.js',
   './manifest.webmanifest', './car.js', './img/car/stealth.webp', './img/car/pearl.webp', './img/car/black.webp', './img/car/glacier.webp',
-  './img/car/marine.webp', './img/car/ultrared.webp', './img/car/quicksilver.webp', './img/car/deepblue.webp', './data/cameras.json', './data/demo_route.json',
+  './img/car/ultrared.webp', './img/car/gold.webp', './data/cameras.json', './data/demo_route.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener('activate', e => {
