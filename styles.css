@@ -1,0 +1,63 @@
+:root{--bg:#0b0c0e;--card:#16181c;--line:#26292f;--txt:#e9ebee;--mut:#8b9098;--acc:#3e6ae1;--red:#e82127;--paint:#d9dadc}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif}
+body{min-height:100dvh;padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(90px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
+.top{display:flex;align-items:center;gap:10px;padding:12px 18px}
+.brand{font-weight:300;letter-spacing:.32em;font-size:15px;flex:1}.brand b{font-weight:700}
+.src-pill{font-size:12px;padding:4px 10px;border-radius:99px;background:#1f2228;color:var(--mut)}
+.src-pill.live{background:#12351f;color:#5fe08a}
+.icon-btn{background:none;border:0;color:var(--txt);font-size:22px;padding:4px 6px}
+main{max-width:760px;margin:0 auto;padding:0 14px}
+.stage{position:relative;padding-top:4px;overflow:hidden}
+.speed{text-align:center;line-height:1}
+.speed-num{font-size:clamp(84px,24vw,140px);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:-.03em;transition:color .3s}
+.speed-num.over{color:var(--red)}
+.speed-unit{color:var(--mut);font-size:15px;letter-spacing:.2em;margin-top:2px}
+.car-wrap{position:relative;z-index:2;margin:8px -6px -6px}
+.car-wrap svg{width:100%;height:auto;display:block}
+.model-label{text-align:center;font-size:13px;letter-spacing:.4em;color:var(--mut);margin-top:2px;text-transform:uppercase}
+.road{height:6px;margin:6px -14px 0;position:relative;overflow:hidden;opacity:.6}
+.road-lines{position:absolute;inset:0;width:200%;background:repeating-linear-gradient(90deg,#3a3d44 0 40px,transparent 40px 80px)}
+.colors{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0 4px}
+.swatch{width:34px;height:34px;border-radius:50%;border:2px solid transparent;outline:1px solid #333;cursor:pointer;padding:0;box-shadow:inset 0 -6px 10px rgba(0,0,0,.35),inset 0 5px 8px rgba(255,255,255,.25)}
+.swatch.sel{border-color:#fff;outline-color:#fff}
+.color-name{text-align:center;color:var(--mut);font-size:13px;min-height:18px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px}
+.row{display:flex;gap:8px}
+input,select{background:#0f1114;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:16px;width:100%}
+.btn{background:#2a2d33;color:var(--txt);border:0;border-radius:10px;padding:11px 16px;font-size:16px;white-space:nowrap}
+.btn.primary{background:var(--acc)}.btn.stop{background:#5a1f22}
+.btn.big{width:100%;padding:16px;font-size:18px;font-weight:600;border-radius:14px}
+.results{list-style:none;margin:6px 0 0;padding:0}
+.results li{padding:10px;border-bottom:1px solid var(--line);font-size:14px;cursor:pointer}
+.results li small{display:block;color:var(--mut)}
+.route-info{color:var(--mut);font-size:14px;margin:10px 2px}
+#miniMap{width:100%;height:auto;background:#0f1114;border-radius:10px;display:block}
+.cam-list{list-style:none;padding:0;margin:8px 0 0;font-size:13px;max-height:220px;overflow:auto}
+.cam-list li{display:flex;gap:10px;align-items:center;padding:7px 2px;border-bottom:1px solid var(--line)}
+.cam-list li.passed{opacity:.35}
+.cam-list .lim{min-width:30px;height:30px;border-radius:50%;border:3px solid var(--red);background:#fff;color:#000;font-weight:800;display:grid;place-items:center;font-size:12px}
+.cam-list .d{margin-left:auto;color:var(--mut);font-variant-numeric:tabular-nums}
+.bottom{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%)}
+.bottom .btn{max-width:728px;margin:0 auto;display:block}
+.banner{position:fixed;z-index:20;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 92px);max-width:620px;margin:0 auto;display:flex;align-items:center;gap:16px;background:rgba(22,24,28,.96);border:1px solid #3a2a2b;border-radius:18px;padding:12px 16px;box-shadow:0 10px 40px rgba(0,0,0,.6);transition:transform .25s,opacity .25s}
+.banner.hidden{opacity:0;transform:translateY(20px);pointer-events:none}
+.banner.over{background:rgba(110,14,18,.96);border-color:#e82127;animation:pulse 1s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(232,33,39,.35)}}
+.cam-sign{width:64px;height:64px;flex:none;border-radius:50%;background:#fff;border:7px solid var(--red);display:grid;place-items:center;color:#000;font-weight:800;font-size:26px;font-variant-numeric:tabular-nums}
+.b-dist{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums}
+.b-place{font-size:13px;color:#c8ccd2;margin-top:2px}
+dialog{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:18px;width:min(92vw,520px);padding:0}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.settings{padding:18px;display:flex;flex-direction:column;gap:12px}
+.settings h2{margin:0 0 4px;font-weight:500}
+.settings label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--mut)}
+.settings label.chk{flex-direction:row;align-items:center;color:var(--txt)}
+.settings label.chk input{width:auto}
+.note{font-size:12px;color:var(--mut);margin:0;line-height:1.5}.note.warn{color:#e0b25f}
+.car-photo{position:relative;width:100%}
+.car-photo img{display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.car-body{width:100%;height:auto}
+.car-wheel{position:absolute;aspect-ratio:1;border-radius:50%;overflow:hidden;will-change:transform;
+  -webkit-mask-image:radial-gradient(circle,#000 88%,transparent 100%);mask-image:radial-gradient(circle,#000 88%,transparent 100%)}
+.car-wheel img{position:absolute;max-width:none;height:auto}

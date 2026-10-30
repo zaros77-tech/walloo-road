@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0b0c0e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Walloo Road">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css?v=2">
+<title>Walloo Road</title>
+</head>
+<body>
+<header class="top">
+  <div class="brand">WALLOO <b>ROAD</b></div>
+  <div class="src-pill" id="srcPill">데모</div>
+  <button class="icon-btn" id="settingsBtn" aria-label="설정">⚙︎</button>
+</header>
+
+<div id="alertBanner" class="banner hidden" role="alert">
+  <div class="cam-sign"><span id="bLimit">60</span></div>
+  <div class="b-text">
+    <div class="b-dist" id="bDist">1.0 km</div>
+    <div class="b-place" id="bPlace">과속 단속 카메라</div>
+  </div>
+</div>
+
+<main>
+  <section class="stage">
+    <div class="speed">
+      <div class="speed-num" id="speedNum">0</div>
+      <div class="speed-unit">km/h</div>
+    </div>
+    <div id="carWrap" class="car-wrap"></div>
+    <div class="model-label">Model Y L</div>
+    <div class="road"><div class="road-lines" id="roadLines"></div></div>
+  </section>
+
+  <section class="colors" id="colors" aria-label="차량 색상"></section>
+  <div class="color-name" id="colorName"></div>
+
+  <section class="card nav">
+    <div class="row">
+      <input id="destInput" type="search" placeholder="목적지 검색 (예: 수원역, 강남역)" enterkeyhint="search" autocomplete="off">
+      <button id="destBtn" class="btn">검색</button>
+    </div>
+    <ul id="destResults" class="results"></ul>
+    <div class="route-info" id="routeInfo">경로 없음</div>
+    <canvas id="miniMap" width="680" height="260"></canvas>
+    <ul id="camList" class="cam-list"></ul>
+  </section>
+</main>
+
+<footer class="bottom">
+  <button id="startBtn" class="btn primary big">주행 시작</button>
+</footer>
+
+<dialog id="settings">
+  <form method="dialog" class="settings">
+    <h2>설정</h2>
+    <label>데이터 소스
+      <select id="srcSelect">
+        <option value="demo">데모 (시뮬레이션: 광화문 → 강남역)</option>
+        <option value="gps">휴대폰 GPS</option>
+        <option value="tesla">Tesla Fleet API (백엔드 필요)</option>
+      </select>
+    </label>
+    <label>Tesla 백엔드 URL <input id="backendUrl" type="url" placeholder="https://walloo.example.com"></label>
+    <label>폴링 간격(초) <input id="pollSec" type="number" min="2" max="60" value="5"></label>
+    <label>데모 배속 <select id="demoRate"><option value="1">1x</option><option value="2">2x</option><option value="4" selected>4x</option><option value="8">8x</option></select></label>
+    <label class="chk"><input id="ttsOn" type="checkbox" checked> 음성 안내 (TTS)</label>
+    <label class="chk"><input id="chimeOn" type="checkbox" checked> 과속 차임</label>
+    <p class="note" id="dataNote"></p>
+    <p class="note">iPhone: Safari에서 열고 공유 → '홈 화면에 추가'. 소리·음성은 '주행 시작'을 탭해야 켜집니다. GPS는 HTTPS 필요, 화면이 꺼지거나 앱이 백그라운드로 가면 동작이 멈춥니다.</p>
+    <p class="note warn">안전 운전 보조용입니다. 단속 데이터는 실제와 다를 수 있으니 항상 도로 표지와 법규를 따르세요.</p>
+    <button class="btn primary" value="ok">닫기</button>
+  </form>
+</dialog>
+
+<script src="geo.js"></script>
+<script src="car.js?v=2"></script>
+<script src="sources.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
